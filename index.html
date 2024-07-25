@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div class="overlay-text">
+        Click this Card
+    </div>
+
+    <div class="birthday-card" id="birthdayCard">
+
+         <!-- Outer -->
+         <div class="cover-outer">
+            <img src="https://images.esellerpro.com/3274/I/318/37/lrgscaleAO002.jpg" width="100%">   
+        </div>
+
+
+        <!-- Inner -->
+        <div class="cover-inner">
+            <img class="anime-image" src="image.jpeg">
+        </div>
+
+    
+        <!-- Text -->
+        <div class="text">
+            <p class="title">
+                Happy Birthday! <br> Anurag❤️
+            </p>
+            <p id="customMessage">
+                "Happy Birthday, my love! 🎉 Though we're miles apart, my heart celebrates with you. ❤️ May your day be as wonderful as you are!"🌹
+                
+                <br><br>
+                <b>I LOVE YOU❤️</b>
+            </p>
+        </div>
+    </div> 
+
+
+    <audio id="flipSound" src="audio.mp3"></audio>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const card = document.getElementById('birthdayCard');
+        const flipSound = document.getElementById('flipSound');
+
+        if (!card || !flipSound) {
+            console.error('Required elements not found in the document.');
+            return;
+        }
+
+        function playAnimation() {
+            if (flipSound) flipSound.play();
+            if (typeof confetti === 'function') {
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            } else {
+                console.error('Confetti function is not defined.');
+            }
+        }
+
+        card.addEventListener('mouseover', playAnimation);
+        card.addEventListener('touchstart', playAnimation, { passive: true });
+        card.addEventListener('click', function() {
+            playAnimation();
+            card.classList.toggle('shrink'); // Toggle the shrink class on click
+        });
+    });
+</script>
+
+
+
+
+
+    
+    
+
+</body>
+</html>
